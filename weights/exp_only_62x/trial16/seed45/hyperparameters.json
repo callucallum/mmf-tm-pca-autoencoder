@@ -1,0 +1,41 @@
+{
+  "trial": 16,
+  "seed": 45,
+  "params": {
+    "enc1": 24,
+    "attn_heads": 1,
+    "linformer_k": 24,
+    "pretrain_lr": 0.0013501972288181515,
+    "finetune_lr": 0.0001487789278535088,
+    "weight_decay": 1.265892951643262e-06,
+    "pretrain_batch_size": 4
+  },
+  "mode": "exp-only",
+  "trials": [
+    16
+  ],
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "exp_ft_n": [
+    163,
+    10,
+    5
+  ],
+  "n_sim": 2000,
+  "study": "TMM_62x_ES_FT_v2",
+  "max_pretrain_epochs": 5000,
+  "max_ft_epochs": 300,
+  "pretrain_patience": 30,
+  "out_name": "exp_only_62x",
+  "exp_only": true,
+  "exp_batch_size": 2,
+  "dead_plateau_epoch": 100,
+  "eval_test": false,
+  "smoke": false,
+  "fast": false
+}
