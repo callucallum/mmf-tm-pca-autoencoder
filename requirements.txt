@@ -1,0 +1,8 @@
+# Third-party packages imported by the scripts in this repository (versions used for the paper in brackets).
+# Install a CUDA build of PyTorch from https://pytorch.org first if you want GPU training.
+torch            # 2.14.0+cu130
+numpy
+scikit-learn     # splits/ (train_test_split)
+optuna           # training/Optuna_62x_ES_FT.py and Final_62x_ES_FT.py
+psutil           # memory reporting in the training scripts
+pillow           # evaluation/unscramble_test.py, only for --target image files

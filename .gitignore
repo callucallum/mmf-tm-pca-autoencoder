@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+# produced by the scripts (see README): simulated TMs, input patterns, checkpoints, logs, results
+data/
+outputs/
