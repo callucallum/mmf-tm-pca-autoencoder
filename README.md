@@ -1,5 +1,7 @@
 # Simulation-pretrained autoencoder vs PCA for multimode-fibre transmission matrices
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24343908.svg)](https://doi.org/10.5281/zenodo.24343908)
+
 Code, trained weights and split indices for
 
 > **Benchmarking a simulation-pretrained autoencoder against PCA for compressing multimode fibre transmission matrices from few measurements**
@@ -117,8 +119,43 @@ model.eval()
 Windows 11, NVIDIA RTX Pro 6000 Blackwell Max-Q Workstation Edition, Python 3.12.14, PyTorch 2.14.0+cu130. Training of the final configuration used deterministic cuDNN/cuBLAS kernels with TF32
 disabled (`--fast` turns this off). See `requirements.txt`.
 
-## Citation and licence
+## Licence
 
-Citation: *TODO – add BibTeX when the preprint is online.*
+Code under the [MIT licence](LICENSE); trained weights in `weights/` under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), like the two datasets.
 
-Licence: code under the [MIT licence](LICENSE); trained weights in `weights/` under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), like the two datasets.
+## Citation
+
+If you use the weights or data, please cite them. Cite the code release (the concept DOI always resolves to the latest version) if you use the code. The paper will be added here when the preprint is online.
+
+```bibtex
+@software{wilson2026mmftmpcaautoencoder,
+  author    = {Wilson, Callum J.},
+  title     = {Code, weights and splits for the simulation-pretrained autoencoder vs PCA study},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.24343908},
+  url       = {https://github.com/callucallum/mmf-tm-pca-autoencoder}
+}
+```
+```bibtex
+@dataset{wilson2026mmftmrmexperimental,
+  author    = {Wilson, Callum J. and Wright, Terry and Gordon, George S.D.},
+  title     = {Experimental transmission and reflection matrices of a bent multimode fibre},
+  year      = {2026},
+  publisher = {Hugging Face},
+  version   = {v1.0.0},
+  doi       = {10.57967/hf/11679},
+  url       = {https://huggingface.co/datasets/OPTIMlab/mmf-tm-rm-experimental}
+}
+```
+```bibtex
+@dataset{wilson2026mmftmsimulated,
+  author    = {Wilson, Callum J. and Gordon, George S.D.},
+  title     = {Simulated 1 m multimode-fibre transmission matrices},
+  year      = {2026},
+  publisher = {Hugging Face},
+  version   = {v1.0.0},
+  doi       = {10.57967/hf/11677},
+  url       = {https://huggingface.co/datasets/OPTIMlab/mmf-tm-simulated}
+}
+```
