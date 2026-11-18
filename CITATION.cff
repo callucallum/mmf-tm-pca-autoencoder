@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using these metadata."
+type: software
+title: "Code, trained weights and split indices for a simulation-pretrained autoencoder versus PCA for multimode-fibre transmission matrices"
+authors:
+  - family-names: Wilson
+    given-names: Callum J.
+    orcid: "https://orcid.org/0009-0003-4651-8294"
+    affiliation: "University of Cambridge"
+version: v1.0.0
+date-released: 2026-11-18
+doi: 10.5281/zenodo.24343908
+license: MIT
+repository-code: "https://github.com/callucallum/mmf-tm-pca-autoencoder"
