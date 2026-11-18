@@ -1,10 +1,11 @@
 """Frozen split of the 204 experimental TMs: 163 train / 20 validation / 21 test (random_state=42), plus the nested
 training subsets used for the fine-tuning data-scaling studies (first 5, 10, 25, 50, 100, 125, 150 training TMs).
 
-The resulting index files are released in splits/indices/exp/. This script regenerates them from the row order of
-processed_dataset.npz (the order of processed_dataset_paths.txt in the mmf-stepindex-tms-optimlab dataset repo) and
-reports whether they match the files already in --out-dir, which doubles as a check that your processed dataset has the
-same row order as ours. Existing files are only replaced with --overwrite.
+The resulting index files are released in splits/indices/exp/. This script regenerates them from the number of TMs in
+processed_dataset.npz (204) and reports whether they match the files already in --out-dir. The indices are drawn from
+np.arange(204), so this confirms the split procedure and the TM count, not the row order. The row order is fixed by
+processed_dataset_paths.txt in the mmf-tm-rm-experimental dataset repo (Experiment1/01 ... Experiment3/20, numerical
+order), and the released indices refer to it. Existing files are only replaced with --overwrite.
 
 Usage: python splits/train_test_split_exp_indices.py [--out-dir DIR] [--overwrite]
 """

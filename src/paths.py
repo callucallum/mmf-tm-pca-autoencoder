@@ -4,9 +4,9 @@ Each location can be overridden with an environment variable. Environment variab
 flags) because the sub-batch training scripts already take positional arguments from their run_* drivers.
 
     TM_EXP_DATA       experimental TM stack, key 'TM', shape (204, 42025, 145)  [processed_dataset.npz from the
-                      mmf-stepindex-tms-optimlab dataset repo; default ../mmf-stepindex-tms-optimlab/processed_dataset.npz]
+                      mmf-tm-rm-experimental dataset repo; default ../mmf-tm-rm-experimental/processed_dataset.npz]
     TM_SIM_DIR        simulated 1 m TMs (TM0000.pkl ... TM4999.pkl or TMxxxx-GPU.pkl), dist_pim_to_real.pkl and
-                      prox_real_to_pim.pkl                                          [default ../mmf-stepindex-tms-optimlab/Simulated_(TMM)]
+                      prox_real_to_pim.pkl                                          [default ../mmf-tm-simulated/TransferMatrixMethod/]
     TM_INPUTS         orthonormal_random_inputs_371x371_145.npy (the 145 orthonormal input patterns, released with the simulated TMs)
                                                                                     [default <TM_SIM_DIR>/orthonormal_random_inputs_371x371_145.npy]
     TM_SIM_SPLIT_DIR  train/val/test composite-5 m index files                      [default <repo>/splits/indices/sim]
@@ -28,8 +28,8 @@ def _path(name, default):
     return Path(os.environ.get(name, str(default))).expanduser()
 
 
-EXP_DATA = _path("TM_EXP_DATA", REPO_ROOT.parent / "mmf-stepindex-tms-optimlab" / "processed_dataset.npz")
-SIM_DIR = _path("TM_SIM_DIR", REPO_ROOT.parent / "mmf-stepindex-tms-optimlab" / "Simulated_(TMM)")
+EXP_DATA = _path("TM_EXP_DATA", REPO_ROOT.parent / "mmf-tm-rm-experimental" / "processed_dataset.npz")
+SIM_DIR = _path("TM_SIM_DIR", REPO_ROOT.parent / "mmf-tm-simulated" / "TransferMatrixMethod")
 INPUTS_FILE = _path("TM_INPUTS", SIM_DIR / "orthonormal_random_inputs_371x371_145.npy")
 SIM_SPLIT_DIR = _path("TM_SIM_SPLIT_DIR", REPO_ROOT / "splits" / "indices" / "sim")
 EXP_SPLIT_DIR = _path("TM_EXP_SPLIT_DIR", REPO_ROOT / "splits" / "indices" / "exp")
