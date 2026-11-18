@@ -28,30 +28,38 @@ as a prior when few or no real TMs exist. This repository contains everything ne
 ## Data
 
 **Experimental TMs.** 204 TMs of a 5 m, 50 µm, NA 0.22 step-index fibre with random bends (660 nm), 145 inputs each, are released as raw
-`TM.mat` files at <https://huggingface.co/datasets/OPTIMlab/mmf-stepindex-tms-optimlab> (CC BY 4.0).
+`TM.mat` files (together with the corresponding reflection matrices) at [huggingface.co/datasets/OPTIMlab/mmf-tm-rm-experimental](https://huggingface.co/datasets/OPTIMlab/mmf-tm-rm-experimental)
+(CC BY 4.0, DOI [10.57967/hf/11679](https://doi.org/10.57967/hf/11679)).
 
 ```bash
-git clone https://huggingface.co/datasets/OPTIMlab/mmf-stepindex-tms-optimlab
-cd mmf-stepindex-tms-optimlab
-python Import_and_Prepare_TMs.py   # writes processed_dataset.npz (key 'TM', shape (204, 42025, 145)) and processed_dataset_paths.txt
+git clone https://huggingface.co/datasets/OPTIMlab/mmf-tm-rm-experimental
+cd mmf-tm-rm-experimental
+python Import_and_Prepare_TMs.py   # writes processed_dataset.npz (keys 'TM' (204, 42025, 145) and 'RM') and processed_dataset_paths.txt
 ```
 
-`processed_dataset.npz` holds the pixel-basis TMs (205 x 205 output pixels, 145 inputs), each divided by its largest singular value. The row order is the order of
+`processed_dataset.npz` holds the pixel-basis TMs (205 x 205 output pixels, 145 inputs), each divided by its largest singular value; the scripts here use only `TM`. The processing script needs about 52 GB of RAM
+and the `.npz` is about 25 GB. The row order is the order of
 `processed_dataset_paths.txt`, and the frozen split indices in `splits/indices/exp/` refer to that order. By default the scripts look for
-`../mmf-stepindex-tms-optimlab/processed_dataset.npz` (i.e. the two repositories side by side); otherwise set `TM_EXP_DATA`.
+`../mmf-tm-rm-experimental/processed_dataset.npz` (i.e. the two repositories side by side); otherwise set `TM_EXP_DATA`.
 
-**Simulated TMs.** The pretraining pool of simulated 1 m TMs (`TM*.pkl`), `dist_pim_to_real.pkl`, `prox_real_to_pim.pkl` and the 145 orthonormal input patterns
-(`orthonormal_random_inputs_371x371_145.npy`) are released as pre-generated files in the `Simulated_(TMM)/` folder of the same Hugging Face dataset repository, so the clone above already contains them. The simulator itself is not part of this repository.
-By default the scripts read them from `../mmf-stepindex-tms-optimlab/Simulated_(TMM)/`; otherwise set `TM_SIM_DIR` (and `TM_INPUTS` if the input-pattern file is elsewhere). Then check the splits:
+**Simulated TMs.** The pretraining pool of 5,000 simulated 1 m TMs (`TM*.pkl`), `dist_pim_to_real.pkl`, `prox_real_to_pim.pkl` and the 145 orthonormal input patterns
+(`orthonormal_random_inputs_371x371_145.npy`) are released as pre-generated files in the `TransferMatrixMethod/` folder of [huggingface.co/datasets/OPTIMlab/mmf-tm-simulated](https://huggingface.co/datasets/OPTIMlab/mmf-tm-simulated)
+(CC BY 4.0, DOI [10.57967/hf/11677](https://doi.org/10.57967/hf/11677)). The simulator itself is not part of this repository.
+
+```bash
+git clone https://huggingface.co/datasets/OPTIMlab/mmf-tm-simulated
+```
+
+By default the scripts read them from `../mmf-tm-simulated/TransferMatrixMethod/`; otherwise set `TM_SIM_DIR` (and `TM_INPUTS` if the input-pattern file is elsewhere). Then check the splits:
 
 ```bash
 python splits/train_test_split_sim_indices_5m.py                        # checks the released composite-5 m indices against a fresh regeneration
-python splits/train_test_split_exp_indices.py                           # same for the experimental split (also checks your row order)
+python splits/train_test_split_exp_indices.py                           # same for the experimental split (confirms the procedure and TM count; the row order is fixed by processed_dataset_paths.txt)
 ```
 
 The released index files in `splits/indices/` fix which pool entries form each train/validation/test composite, and `weights/` lets you check the downstream numbers against our exact models.
 
-All locations can be changed with environment variables (full list in `src/paths.py`): `TM_EXP_DATA`, `TM_SIM_DIR` (default `../mmf-stepindex-tms-optimlab/Simulated_(TMM)`), `TM_INPUTS`,
+All locations can be changed with environment variables (full list in `src/paths.py`): `TM_EXP_DATA`, `TM_SIM_DIR` (default `../mmf-tm-simulated/TransferMatrixMethod`), `TM_INPUTS`,
 `TM_SIM_SPLIT_DIR`, `TM_EXP_SPLIT_DIR`, `TM_OUT_ROOT` (training outputs, default `outputs/`), `TM_MODEL_ROOT` (where evaluation scripts read weights, default `weights/`)
 and `TM_OPTUNA_DB`.
 
@@ -113,4 +121,4 @@ disabled (`--fast` turns this off). See `requirements.txt`.
 
 Citation: *TODO – add BibTeX when the preprint is online.*
 
-Licence: *TODO – choose a licence before release* (the experimental dataset is CC BY 4.0).
+Licence: code under the [MIT licence](LICENSE); trained weights in `weights/` under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), like the two datasets.
