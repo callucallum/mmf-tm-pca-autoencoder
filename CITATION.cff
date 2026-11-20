@@ -12,3 +12,22 @@ date-released: 2026-11-18
 doi: 10.5281/zenodo.24343908
 license: MIT
 repository-code: "https://github.com/callucallum/mmf-tm-pca-autoencoder"
+preferred-citation:
+  type: article
+  title: "Simulation-pretrained autoencoders versus PCA for compressing multimode fibre transmission matrices"
+  authors:
+    - family-names: Wilson
+      given-names: Callum J.
+    - family-names: Wright
+      given-names: Terry
+    - family-names: Yang
+      given-names: Qing
+    - family-names: Wen
+      given-names: Zhong
+    - family-names: Pound
+      given-names: Michael P.
+    - family-names: Gordon
+      given-names: George S. D.
+  journal: "arXiv preprint arXiv:2611.26391"
+  year: 2026
+  doi: 10.48550/arXiv.2611.26391
