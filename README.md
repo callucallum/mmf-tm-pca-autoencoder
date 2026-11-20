@@ -1,11 +1,12 @@
 # Simulation-pretrained autoencoder vs PCA for multimode-fibre transmission matrices
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24343908.svg)](https://doi.org/10.5281/zenodo.24343908)
+[![arXiv](https://img.shields.io/badge/arXiv-2611.26391-b31b1b.svg)](https://arxiv.org/abs/2611.26391)
 
 Code, trained weights and split indices for
 
-> **Benchmarking a simulation-pretrained autoencoder against PCA for compressing multimode fibre transmission matrices from few measurements**
-> C. J. Wilson et al. (arXiv: *TODO – add link when the preprint is online*)
+> **Simulation-pretrained autoencoders versus PCA for compressing multimode fibre transmission matrices**
+> C. J. Wilson et al., [arXiv:2611.26391](https://doi.org/10.48550/arXiv.2611.26391)
 
 A convolutional autoencoder with channel attention compresses a 50 µm multimode-fibre transmission matrix (TM) 62-fold. It is pretrained on
 simulated fibres (composites of five simulated 1 m TMs), then fine-tuned on a few measured TMs. It is benchmarked against per-speckle PCA
@@ -125,7 +126,7 @@ Code under the [MIT licence](LICENSE); trained weights in `weights/` under [CC B
 
 ## Citation
 
-If you use the weights or data, please cite them. Cite the code release (the concept DOI always resolves to the latest version) if you use the code. The paper will be added here when the preprint is online.
+If you use the weights or data, please cite them. Cite the code release (the concept DOI always resolves to the latest version) if you use the code:
 
 ```bibtex
 @software{wilson2026mmftmpcaautoencoder,
@@ -157,5 +158,19 @@ If you use the weights or data, please cite them. Cite the code release (the con
   version   = {v1.0.0},
   doi       = {10.57967/hf/11677},
   url       = {https://huggingface.co/datasets/OPTIMlab/mmf-tm-simulated}
+}
+```
+
+Please also cite the paper:
+
+```bibtex
+@misc{wilson2026simpretrainedae,
+  author        = {Wilson, Callum J. and Wright, Terry and Yang, Qing and Wen, Zhong and Pound, Michael P. and Gordon, George S.D.},
+  title         = {Simulation-pretrained autoencoders versus PCA for compressing multimode fibre transmission matrices},
+  year          = {2026},
+  eprint        = {2611.26391},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2611.26391},
+  url           = {https://arxiv.org/abs/2611.26391}
 }
 ```
